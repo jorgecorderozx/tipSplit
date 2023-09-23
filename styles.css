@@ -4,7 +4,7 @@
     --dark-grayish-cyan:hsl(186, 14%, 43%);
     --grayish-cyan:hsl(184, 14%, 56%);
     --light-grayish-cyan:hsl(185, 41%, 84%);
-    --very-light-grayish-cyan:hsl(185, 41%, 84%);
+    --very-light-grayish-cyan:hsl(202, 50%, 97%);
     --white: hsl(0, 0%, 100%);
 
 }
@@ -21,7 +21,6 @@
 }
 
 
-
 main, form, #generalOutputContainer, .formPairs{
     flex-direction: column;
 }
@@ -34,6 +33,39 @@ h1, label {
     color: var(--grayish-cyan);
 }
 
+input[type="number"]{
+    background-color: var(--very-light-grayish-cyan);
+    border: none;
+    color: var(--very-dark-cyan);
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+input[type="number"], .individualPercentageContainer {
+    border-radius: 0.5rem;
+}
+
+.widerInputsContainer{
+    background-color: var(--very-light-grayish-cyan);
+    position: relative;
+    justify-content: space-between;
+    align-content: center;
+    width: calc(100% + 0.8rem);
+    
+}
+
+.widerInputsContainer > input {
+    font-size: 1.3rem;
+    padding: 0.8rem 1rem;
+    width: 80%;
+    text-align: end;
+}
+
 body {
     min-height: 100vh;
     background-color: var(--light-grayish-cyan);
@@ -44,10 +76,11 @@ main{
 }
 
 h1 {
+    font-size: 1.5rem;
     align-self: center;
     text-transform: uppercase;
     letter-spacing: 0.5rem;
-    padding: 1rem 0;
+    padding: 2rem 0;
 }
 
 form {
@@ -57,12 +90,18 @@ form {
     gap: 1rem;
 }
 
+img{
+    align-self: center;
+    position: relative;
+    left: 1.5rem;
+}
+
 
 #tipPercentageContainer{
     justify-content: center;
     display: grid;
     grid-template-columns: 50% 50%;
-    gap: 0.5rem;
+    gap: 0.8rem;
 }
 
 .individualPercentageContainer{
@@ -71,10 +110,9 @@ form {
     width: 100%;
     align-items: center;
     position: relative;
+    padding: 0.9rem 0;
     
 }
-
-
 
 .individualPercentageContainer > p {
     position: absolute;
@@ -88,17 +126,34 @@ input[name="percentageInput"]{
     opacity: 0;
 }
 
+#customInput{
+    text-align: center;
+}
+
+.individualPercentageContainer > p , #customInput{
+    font-size: 1.3rem;
+}
+
 
 #generalOutputContainer{
     background-color: var(--very-dark-cyan);
-    padding: 1.5rem;
+    padding: 2rem;
     border-radius: 1rem;
+    margin-top: 1rem;
+    width: calc(100% + 0.8rem);
 
 }
 
 #generalOutputContainer > div {
     align-items: center;
     justify-content: space-between;
+}
+
+input[type="reset"]{
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    height: 3.5rem;
+
 }
 
 h2 {
@@ -127,10 +182,26 @@ input[type="reset"]{
     margin-top: 1rem;
 }
 
-.formPairs:nth-child(1), .formPairs:nth-child(2) > label {
+input[type="reset"]:hover{
+    background-color: var(--white);
+}
+
+.formPairs:nth-child(1), .formPairs:nth-child(2), .formPairs:nth-child(3){
+    gap: 0.5rem;
+}
+
+.formPairs:nth-child(1), .formPairs:nth-child(2) > label, #generalOutputContainer, .formPairs:nth-child(3) {
     position: relative;
     /*Right value to align items because of gap between inputs from the input container with the discounts*/
     right: 0.5rem; 
 }
 
+.individualPercentageContainer:hover {
+    background-color: var(--strong-cyan);
+    color: var(--very-dark-cyan);
+}
+
+input:focus{
+    outline: none;
+}
 

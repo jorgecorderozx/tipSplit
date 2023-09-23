@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,36 +15,51 @@
 </head>
 
 <body>
-  <main>
-    <h1>Splitter</h1>
-    <form>
-      <label for="billValue">Bill</label>
-      <br>
-      <input type="number" id="billValue" min="0">
-      <br>
-      <label for="tipPercentageContainer">Select Tip %</label>
-      <div id="tipPercentageContainer">
-        <input name="percentageInput" type="radio" value="5%">
-        <input name="percentageInput" type="radio" value="10%">
-        <input name="percentageInput" type="radio" value="15%">
-        <input name="percentageInput" type="radio" value="25%">
-        <input name="percentageInput" type="radio" value="50%">
-        <input type="number" min="0" placeholder="Custom">
+  <main class="flex-container">
+    <h1>Spli<br>tter</h1>
+    <form class="flex-container">
+
+      <div class="flex-container formPairs">
+        <label for="billValue">Bill</label>
+        <input type="number" id="billValue" min="0">
       </div>
 
+      <div class="flex-container formPairs">
+        <label for="tipPercentageContainer">Select Tip %</label>
+        <div id="tipPercentageContainer">
+          <div class="individualPercentageContainer">
+            <p>5%</p><input name="percentageInput" type="radio" value="5%">
+          </div>
+          <div class="individualPercentageContainer">
+            <p>10%</p><input name="percentageInput" type="radio" value="10%">
+          </div>
+          <div class="individualPercentageContainer">
+            <p>15%</p><input name="percentageInput" type="radio" value="15%">
+          </div>
+          <div class="individualPercentageContainer">
+            <p>25%</p><input name="percentageInput" type="radio" value="25%">
+          </div>
+          <div class="individualPercentageContainer">
+            <p>50%</p><input name="percentageInput" type="radio" value="50%">
+          </div>
+          <input id="customInput" type="number" min="0" placeholder="Custom">
+        </div>
+      </div>
+
+      <div class="flex-container formPairs">
       <label for="numberOfPeopleInput">Number of People</label>
-      <br>
       <input type="number" min="1" id="numberOfPeopleInput">
+      </div>
 
       <div class="flex-container" id="generalOutputContainer">
         <!--Los numeros de output los tengo de referencia para ver como se muestran, luego los quitare porque cambiaran solo con innerHTML -->
-        <div class="flex-container"> 
+        <div class="flex-container">
           <h2>Tip Amount<br><span>/ person</span></h2>
-          <h2 id="tipAmountOutput">10</h2>
+          <p id="tipAmountOutput">10</p>
         </div>
-        <div class="flex-container"> 
+        <div class="flex-container">
           <h2>Total<br><span>/ person</span></h2>
-          <h2 id="totalAmountOutput">20</h2>
+          <p id="totalAmountOutput">20</p>
         </div>
         <input type="reset" value="Reset">
       </div>

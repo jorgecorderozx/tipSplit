@@ -21,7 +21,7 @@
 }
 
 
-main, form, #generalOutputContainer, .formPairs{
+main, form, section, #generalOutputContainer, .formPairs{
     flex-direction: column;
 }
 
@@ -56,6 +56,7 @@ input[type="number"], .individualPercentageContainer {
     justify-content: space-between;
     align-content: center;
     width: calc(100% + 0.8rem);
+    border-radius: 0.5rem;
     
 }
 
@@ -203,5 +204,69 @@ input[type="reset"]:hover{
 
 input:focus{
     outline: none;
+}
+
+@media (min-width:1024px){
+    main{
+        justify-content: center;
+        align-items: center;
+    }
+
+    h1{
+        margin: 5rem 3.5rem 0;
+    }
+
+    form {
+
+        flex-direction: row;
+        width: 60vw;
+        padding: 3rem;
+        gap: 10%;
+    }
+    
+
+    section {
+        gap: 2rem;
+        width: 45%;
+        height: 100%;
+    }
+
+    section:nth-child(2){
+        width: 60%;
+    }
+
+    #tipPercentageContainer {
+        grid-template-columns: 33.3% 33.3% 33.3%;
+    }
+
+
+
+    #generalOutputContainer {
+        margin-top: 0;
+        gap: 2rem;
+        padding: 1.3rem 1.7rem;
+    }
+
+    #generalOutputContainer > div {
+        gap: 8%;
+    }
+
+    h2 {
+        margin-left: 0.5rem;
+    }
+
+    h2, span {
+        font-size: 110%;
+    }
+
+    h2 + p {
+        position: relative;
+        bottom: 0.5rem;
+        font-size: 3rem !important;
+    }
+
+    input[type="reset"]{
+        margin: 3.5rem 0 1rem;
+    }
 }
 

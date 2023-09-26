@@ -148,6 +148,13 @@ input[name="percentageInput"]{
 #generalOutputContainer > div {
     align-items: center;
     justify-content: space-between;
+    font-size: 1rem;
+}
+
+#generalOutputContainer p {
+    max-width: 60%;
+    justify-self: flex-end;
+    overflow-x: scroll;
 }
 
 input[type="reset"]{
@@ -206,7 +213,8 @@ input:focus{
     outline: none;
 }
 
-@media (min-width:1024px){
+
+@media (min-width:1280px){
     main{
         justify-content: center;
         align-items: center;
@@ -220,6 +228,7 @@ input:focus{
 
         flex-direction: row;
         width: 60vw;
+        max-width: 867px;
         padding: 3rem;
         gap: 10%;
     }
@@ -242,6 +251,7 @@ input:focus{
 
 
     #generalOutputContainer {
+        max-width: 390px;
         margin-top: 0;
         gap: 2rem;
         padding: 1.3rem 1.7rem;
@@ -251,12 +261,8 @@ input:focus{
         gap: 8%;
     }
 
-    h2 {
-        margin-left: 0.5rem;
-    }
-
     h2, span {
-        font-size: 110%;
+        font-size: 1rem;
     }
 
     h2 + p {

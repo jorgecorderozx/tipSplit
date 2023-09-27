@@ -154,7 +154,6 @@ input[name="percentageInput"]{
 #generalOutputContainer p {
     max-width: 60%;
     justify-self: flex-end;
-    overflow-x: scroll;
 }
 
 input[type="reset"]{

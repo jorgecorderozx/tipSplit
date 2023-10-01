@@ -1,84 +1,108 @@
 let billInput = document.getElementById("billValue");
-const percentageInputs = document.querySelectorAll('input[name="percentageInput"]');
+let billValueContainer = document.getElementById("billValueContainer");
+let billZeroLabel = document.getElementById("billLessThanZero");
+let percentageInputs = document.querySelectorAll('input[name="percentageInput"]');
 let customInput = document.getElementById("customInput");
 let numberOfPeopleInput = document.getElementById("numberOfPeopleInput");
+let numberOfPeopleValueContainer = document.getElementById("numberOfPeopleValueContainer");
+let numberOfPeopleZeroLabel = document.getElementById("zeroLabel");
 let tipAmountOutput = document.getElementById("tipAmountOutput");
 let totalAmountOutput = document.getElementById("totalAmountOutput");
 let resetBtn = document.getElementById("resetBtn");
-let billFinalValue;
-let tipPercentage;
-let percentageIsLessThanZero;
-let percentageAndCustomNotSelected;
-let billIsLessThanZero;
-let peopleIsLessThanZeroOrNotInt;
+let percentageValue;
 
-function calculateTip() {
-    if (billInput.value == "" || numberOfPeopleInput.value == "" || billIsLessThanZero == true || percentageIsLessThanZero == true || percentageAndCustomNotSelected == true || peopleIsLessThanZeroOrNotInt == true) {
-        tipAmountOutput.innerHTML == "$0.00";
-        totalAmountOutput.innerHTML == "$0.00";
-    }
-
+function calculateTip(billAmount, percentageAmount, numberOfPeople) {
+    let tipPerPerson = billAmount * (percentageAmount / 100) / numberOfPeople;
+    let totalPerPerson = ((tipPerPerson * numberOfPeople) + billAmount) / numberOfPeople;
+    tipAmountOutput.innerHTML = "$" + tipPerPerson;
+    totalAmountOutput.innerHTML = "$" + totalPerPerson;
 }
 
-function billValidation() {
-    if (billInput.value != "") {
-        let billValueCheck = billInput.value;
-        parseFloat(billValueCheck);
-        if (billValueCheck >= 0) {
-            billFinalValue = billInput.value;
-            billIsLessThanZero = false
-        }
-        else {
-            billIsLessThanZero = true;
-        }
-    }
+billInput.addEventListener("input", function () {
+    widerInputsValidation(billInput)
+});
+
+for (i = 0; i < percentageInputs.length; i++) {
+    percentageInputs[i].addEventListener("click", function () {
+        storePercentageValue;
+    })
 }
 
-function percentageInputSelection() {
+customInput.addEventListener("click", uncheckButtons);
+customInput.addEventListener("input", storePercentageValue);
+
+numberOfPeopleInput.addEventListener("input", function () {
+    widerInputsValidation(numberOfPeopleInput)
+});
+
+function storePercentageValue() {
     for (i = 0; i < percentageInputs.length; i++) {
         if (percentageInputs[i].checked) {
-            tipPercentage = percentageInputs[i].value;
-            parseInt(tipPercentage);
-            percentageAndCustomNotSelected = false;
+            percentageValue = percentageInputs[i].value;
+        }
+        else if (customInput.value >= 0) {
+            customInput.style.border = " 1px solid var(--strong-cyan)"
+            percentageValue = customInput.value;
+        }
+        else if (customInput.value < 0) {
+            customInput.style.border = ""
+            percentageValue = "";
+            customInput.style.border = "1px solid red";
         }
 
-        else if (customInput.value != "") {
-            let customInputCheck = customInput.value;
-            parseInt(customInputCheck);
-            if (customInputCheck >= 0) {
-                tipPercentage = customInput.value;
-                parseFloat(tipPercentage);
-                percentageIsLessThanZero = false;
-                percentageAndCustomNotSelected = false;
-            }
+        if (customInput.value === "") {
+            customInput.style.border = "1px solid transparent";
 
+        }
+    }
+}
+
+function uncheckButtons() {
+    for (i = 0; i < percentageInputs.length; i++) {
+        percentageInputs[i].checked = false;
+    }
+}
+
+function widerInputsValidation(inputName) {
+    if (inputName == billInput) {
+        let billInputNumber = billInput.value;
+        parseFloat(billInputNumber);
+        if (billInputNumber >= 0) {
+            billValueContainer.style.border = "1px solid var(--strong-cyan)";
+            billZeroLabel.style.display = "none";
+        }
+        else {
+            billValueContainer.style.border = "1px solid red";
+            billZeroLabel.style.display = "inline";
+        }
+        if (billInputNumber === "") {
+            billValueContainer.style.border = "1px solid transparent";
+            billZeroLabel.style.display = "none"
+        }
+    }
+    if (inputName == numberOfPeopleInput) {
+        let numberOfPeopleInputNumber = numberOfPeopleInput.value;
+        parseInt(numberOfPeopleInputNumber);
+        if (numberOfPeopleInputNumber == Math.floor(numberOfPeopleInputNumber)) {
+            if (numberOfPeopleInputNumber > 0) {
+                numberOfPeopleValueContainer.style.border = "1px solid var(--strong-cyan)";
+                numberOfPeopleZeroLabel.style.display = "none";
+            }
+            else if (numberOfPeopleInputNumber == 0) {
+                numberOfPeopleValueContainer.style.border = "1px solid red";
+                numberOfPeopleZeroLabel.style.display = "inline";
+                numberOfPeopleZeroLabel.innerHTML = "Can't be zero";
+            }
             else {
-                percentageIsLessThanZero = true;
+                numberOfPeopleValueContainer.style.border = "1px solid red";
+                numberOfPeopleZeroLabel.style.display = "inline";
+                numberOfPeopleZeroLabel.innerHTML = "Can't be less than zero"
+                
             }
-
+            if (numberOfPeopleInputNumber === "") {
+                numberOfPeopleValueContainer.style.border = "1px solid transparent";
+                numberOfPeopleZeroLabel.style.display = "none"
+            }
         }
-
-        else {
-            percentageAndCustomNotSelected = true
-        }
-
     }
 }
-
-function numberOfPeopleValidation() {
-    if (numberOfPeopleInput != "") {
-        let numberOfPeopleCheck = numberOfPeopleInput.value;
-        Number(numberOfPeopleCheck);
-        if (numberOfPeopleCheck <= 0 || !Number.isInteger(numberOfPeopleCheck)) {
-            peopleIsLessThanZeroOrNotInt = true;
-        }
-
-        else {
-            peopleIsLessThanZeroOrNotInt = false;
-        }
-
-    }
-}
-
-
-

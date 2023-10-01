@@ -35,7 +35,7 @@ h1, label {
 
 input[type="number"]{
     background-color: var(--very-light-grayish-cyan);
-    border: none;
+    border: 1px solid transparent;
     color: var(--very-dark-cyan);
 }
 
@@ -48,6 +48,16 @@ input[type="number"]::-webkit-outer-spin-button {
 
 input[type="number"], .individualPercentageContainer {
     border-radius: 0.5rem;
+}
+
+#numberOfPeopleLabels, #billLabelContainer{
+    justify-content: space-between;
+    align-items: center;
+}
+
+#zeroLabel, #billLessThanZero{
+    color: red;
+    display: none;
 }
 
 .widerInputsContainer{
@@ -74,6 +84,10 @@ body {
 
 main{
     width: 100%;
+}
+
+section:nth-child(1){
+    gap: 2rem;
 }
 
 h1 {

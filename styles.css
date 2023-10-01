@@ -189,6 +189,17 @@ h2 span {
 #tipAmountOutput, #totalAmountOutput {
     font-size: 2rem;
     color: var(--strong-cyan);
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+
+#tipAmountOutput::-webkit-scrollbar, #totalAmountOutput::-webkit-scrollbar{
+    background-color: var(--very-dark-cyan);
+}
+
+#tipAmountOutput::-webkit-scrollbar-thumb, #totalAmountOutput::-webkit-scrollbar-thumb{
+    background-color: var(--strong-cyan);
+    border-radius: 1rem;
 }
 
 input[type="reset"]{
@@ -204,7 +215,8 @@ input[type="reset"]{
 }
 
 input[type="reset"]:hover{
-    background-color: var(--white);
+    background-color: var(--light-grayish-cyan);
+    color: var(--very-dark-cyan);
 }
 
 .formPairs:nth-child(1), .formPairs:nth-child(2), .formPairs:nth-child(3){
@@ -217,9 +229,9 @@ input[type="reset"]:hover{
     right: 0.5rem; 
 }
 
-.individualPercentageContainer:hover {
-    background-color: var(--strong-cyan);
-    color: var(--very-dark-cyan);
+div[class ="individualPercentageContainer flex-container"]:hover {
+    background-color: var(--strong-cyan) !important;
+    color: var(--very-dark-cyan) !important;
 }
 
 input:focus{
@@ -281,7 +293,7 @@ input:focus{
     h2 + p {
         position: relative;
         bottom: 0.5rem;
-        font-size: 3rem !important;
+        font-size: 2.5rem !important;
     }
 
     input[type="reset"]{
